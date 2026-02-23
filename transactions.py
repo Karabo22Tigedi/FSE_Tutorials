@@ -4,6 +4,7 @@ from typing import List
 # Constants
 CURRENCY_SYMBOL = "R"
 
+
 class Transaction:
     def __init__(self, date, description, amount, category):
         self.date = date
@@ -40,10 +41,11 @@ def calculate_total_expenses(transactions: List[Transaction]) -> Decimal:
             total_expense += trans_amount
     return total_expense
 
+
 # TODO: Implement this function to sum all transactions with positive amounts
 def calculate_total_income(transactions: List[Transaction]) -> Decimal:
     """Calculates the total income from a list of transactions.
-    
+
     Args:
         transactions: A list of Transaction objects.
 
@@ -56,6 +58,7 @@ def calculate_total_income(transactions: List[Transaction]) -> Decimal:
         if trans_amount > 0:
             total_income += trans_amount
     return total_income
+
 
 # NOTE: This function is already complete - no changes needed here!
 def format_currency(amount: Decimal) -> str:
@@ -73,6 +76,7 @@ def format_currency(amount: Decimal) -> str:
         'R 1234.56'
     """
     return f"{CURRENCY_SYMBOL} {amount:,.2f}"
+
 
 # TODO: Update this function to work with Transaction objects instead of dicts.
 # Change List[dict] to List[Transaction], use dot notation (t.amount), and update docstring.
@@ -97,7 +101,7 @@ def calculate_balance(transactions: List[Transaction]) -> Decimal:
         >>> calculate_balance(transactions)
         Decimal('4000')
     """
-    balance = Decimal(calculate_total_income(transactions) + 
-                      calculate_total_expenses(transactions))
+    balance = Decimal(
+        calculate_total_income(transactions) + calculate_total_expenses(transactions)
+    )
     return balance
-
